@@ -1,0 +1,4 @@
+.env
+vendor/
+sclng-backend-test-v1
+.idea/
