@@ -67,9 +67,9 @@ func (s *Service) ListPublicRepositories(ctx context.Context, filters *ListingFi
 
 func (s *Service) GetPublicRepositoriesStats(ctx context.Context, filter *ListingFilters) (*RepositoryStats, error) {
 	stats := RepositoryStats{
-		Language: map[string]float64{},
-		Owner:    map[string]float64{},
-		Topic:    map[string]float64{},
+		Languages: map[string]float64{},
+		Owners:    map[string]float64{},
+		Topics:    map[string]float64{},
 	}
 	repos, err := s.ListPublicRepositories(ctx, filter)
 	if err != nil {
@@ -90,18 +90,18 @@ func (s *Service) GetPublicRepositoriesStats(ctx context.Context, filter *Listin
 		}
 	}
 	for _, repo := range repos {
-		pushToKey(stats.Owner, repo.Owner, 1.0)
+		pushToKey(stats.Owners, repo.Owner, 1.0)
 		for _, topic := range repo.Topics {
-			pushToKey(stats.Topic, topic, 1.0)
+			pushToKey(stats.Topics, topic, 1.0)
 		}
 		for language, value := range repo.Languages {
 			totalBytes += float64(value)
-			pushToKey(stats.Language, language, float64(value))
+			pushToKey(stats.Languages, language, float64(value))
 		}
 	}
-	divideMap(stats.Owner, nbRepos)
-	divideMap(stats.Topic, nbRepos)
-	divideMap(stats.Language, totalBytes)
+	divideMap(stats.Owners, nbRepos)
+	divideMap(stats.Topics, nbRepos)
+	divideMap(stats.Languages, totalBytes)
 	return &stats, nil
 }
 

@@ -14,20 +14,20 @@ ListingFilters struct {
 }
 
 Repository struct {
-	GithubId int64
-	Name string
-	Owner string
-	FullName string
-	URL string
-	CreatedAt time.Time
-	Topics []string
-	Languages map[string]int
+	GithubId int64 `json:"github_id"`
+	Name string `json:"name"`
+	Owner string `json:"owner"`
+	FullName string `json:"fullName"`
+	URL string `json:"url"`
+	CreatedAt time.Time `json:"created_at"`
+	Topics []string `json:"topics"`
+	Languages map[string]int `json:"languages"`
 }
 
 RepositoryStats struct {
-	Language map[string]float64
-	Owner map[string]float64
-	Topic map[string]float64
+	Languages map[string]float64 `json:"languages"`
+	Owners map[string]float64 `json:"owners"`
+	Topics map[string]float64 `json:"topics"`
 }
 
 )
