@@ -2,8 +2,9 @@
 
 ## Instructions
 
-This application needs a [github personal token](https://github.com/settings/tokens) in order to bypass the API rate limit.
+- This application needs a [github personal token](https://github.com/settings/tokens) in order to bypass the API rate limit.
 You can fulfill it in a .env file respecting the .env.example template.
+- Don't forget to vendor the dependencies with `go mod vendor`
 
 ## Execution
 
